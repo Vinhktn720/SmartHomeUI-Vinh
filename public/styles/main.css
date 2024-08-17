@@ -1,0 +1,21 @@
+body {
+    background-color: aquamarine;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.container {
+    padding: 5vh;
+    background-color: azure;
+    border: 100px;
+    border-radius: 3vh;
+}
+.select {
+    display: flex;
+    align-items: center;
+
+}
+.submitButton {
+    height: 40px;
+}

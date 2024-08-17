@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Smart Home Test</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+
+        <!-- Bootstrap CSS v5.2.1 -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="/styles/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+
+    <body>
+        <header>
+            <!-- place navbar here -->
+        </header>
+        <main>
+            <div class="mainBox">
+                    <div class="homeCardContainer" >
+                        <div>
+                            
+                            <a href="http://localhost:2004/test/0" class="homeCard">Home</a>
+                            <% for (let i = 1; i <= numberOfHomes; i++){ %>
+                                <% let urlHome = "http://localhost:2004/test/" + i.toString() %>
+                                <a href="<%= urlHome %>" class="homeCard">
+                                    <i class="fa-solid fa-house" style="padding: 5px; font-size: 20px;"></i>
+                                    Home <%= i %>
+                                </a>
+                            <% } %>
+                        </div>
+                        <!-- <div class="addCard">
+                            <div id="Add" class=" homeCard addButton" onclick="AddDevice()">
+                                <i class="fa fa-solid fa-plus" style="font-size:30px"></i>
+                                Add
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class=" displayBox">
+                        <% if (numberOfPage === "0") { %>
+                        <%- include("noHome.ejs") %>
+                        <% } else { %>
+                            <div class="Content">
+                                <div class="home">
+                                    <div class="changeBox">
+                                        <div class="changeBox-Delete">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </div>
+                                        <div class="changeBox-Edit">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </div>
+                                        <div class="changeBox-Add ">
+                                            <i class="fa-solid fa-plus" onclick="AddDevice()"></i>
+                                        </div>
+                                    </div>
+                                    <h1 class="homeLabel">Home <%=numberOfPage %></h1>
+                                </div>
+                                <div class="personContainer">
+                                    <div class="person">
+                                        <div class="changeBox">
+                                            <div class="changeBox-Delete">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </div>
+                                            <div class="changeBox-Edit">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                            </div>
+                                            <div class="changeBox-Add">
+                                                <i class="fa-solid fa-plus"></i>
+                                            </div>
+                                        </div>
+                                        <h2>personI</h2>
+                                    </div>
+                                    <p>The Internet of Things (IoT) is a fascinating and rapidly evolving field that connects physical 
+                                        devices to the internet, enabling them to collect and exchange data. This interconnected network of 
+                                        devices can range from simple household items like smart thermostats to complex industrial machinery.
+                                    </p>
+                                    <div class="person">
+                                        <div class="changeBox">
+                                            <div class="changeBox-Delete">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </div>
+                                            <div class="changeBox-Edit">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                            </div>
+                                            <div class="changeBox-Add">
+                                                <i class="fa-solid fa-plus"></i>
+                                            </div>
+                                        </div>
+                                        <h2>personI</h2>
+                                    </div>
+                                    <p>As technology continues to advance, the potential for IoT is enormous. Future developments may 
+                                        include more sophisticated AI integration, enhanced security measures, and broader adoption across
+                                        various industries. The continued growth of IoT promises to transform the way we live, work, and interact with the world around us2.
+                                        IoT is not just a technological trend; it’s a transformative force that is reshaping our world. 
+                                        Whether in our homes, workplaces, or cities, IoT is making our lives more connected and efficient.
+                                        If you have any specific questions or need further details on any aspect of IoT, feel free to ask!</p>
+                                </div>
+                            </div>
+                        <% } %>
+                    </div>
+            </div> 
+            <div id="OutAddBox" class="addBox"></div>
+            <div id="AddBox" class="addDeviceBox">
+                <form action="">
+                    <div class="form-group">
+                        <label for="deviceName">Person Name:</label>
+                        <input type="text" class="form-control" id="deviceName" required>
+                    </div>
+                form 
+                    <div class="CloseAdd">
+                        <button type="button" class="btn btn-secondary" onclick="RemoveDevice()">Close</button>
+                        <button type="submit" class="btn btn-primary" onclick="RemoveDevice()"">Add Device</button>
+                    </div>
+                </form>
+            </div>
+            <!-- <div class="messageBox">
+                <div class="mess-Successful">
+                    <i class="fa-solid fa-check text-Successful" style="font-size: 45px;"></i>
+                    <div class="mess-Successfull-textBox">
+                        <p class="text-Successful">Successfully!</p>
+                        <p class="mess-Successful-message">Device has been added</p>
+                    </div>
+                    <i class="fa-solid fa-circle-xmark text-Successful"></i>
+                </div>
+                <div class="mess-Successful">
+                    <i class="fa-solid fa-check text-Successful" style="font-size: 45px;"></i>
+                    <div class="mess-Successfull-textBox">
+                        <p class="text-Successful">Successfully!</p>
+                        <p class="mess-Successful-message">Device has been added</p>
+                    </div>
+                    <i class="fa-solid fa-circle-xmark text-Successful"></i>
+                </div>
+                <div class="mess-Successful">
+                    <i class="fa-solid fa-check text-Successful" style="font-size: 45px;"></i>
+                    <div class="mess-Successfull-textBox">
+                        <p class="text-Successful">Successfully!</p>
+                        <p class="mess-Successful-message">Device has been added</p>
+                    </div>
+                    <i class="fa-solid fa-circle-xmark text-Successful"></i>
+                </div>
+            </div> -->
+        </main>
+        <footer>
+            <!-- place footer here -->
+        </footer>
+        <!-- Bootstrap JavaScript Libraries -->
+        <script src="/Script/Script.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"
+        ></script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>
